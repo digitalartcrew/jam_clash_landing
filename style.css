@@ -1,0 +1,141 @@
+/* Import bold modern font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    color: white;
+}
+
+/* container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.logo img {
+    width: 42px;
+    border-radius: 12px;
+}
+
+/* main download button */
+.download-btn {
+    background: linear-gradient(135deg, #ff004c, #00e5ff);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(255,0,100,0.5);
+    transition: all .2s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0,229,255,0.8);
+}
+
+/* hero */
+.hero {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* splash image */
+.hero-image {
+    width: 40%;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 40px rgba(255,0,100,0.3);
+}
+
+/* headline */
+.hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 10px;
+
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* subtitle */
+.hero p {
+    opacity: 0.85;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* main CTA button */
+.cta {
+    display: inline-block;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff004c, #00e5ff);
+    color: white;
+    padding: 18px 38px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+
+    box-shadow: 0 0 30px rgba(255,0,100,0.6);
+
+    transition: all .2s ease;
+}
+
+.cta:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(0,229,255,1);
+}
+
+/* features grid */
+.features {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* feature cards */
+.feature {
+    background: linear-gradient(180deg, #111, #080808);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.feature h3 {
+    font-weight: 800;
+}
+
+.feature p {
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+/* footer */
+.footer {
+    margin-top: 60px;
+    text-align: center;
+    opacity: 0.5;
+    font-weight: 600;
+}
