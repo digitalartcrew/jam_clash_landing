@@ -72,6 +72,18 @@
       color: #c0c0c0;
     }
 
+    ul {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
+    li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #c0c0c0;
+      margin-bottom: 4px;
+    }
+
     a {
       color: #a78bfa;
       text-decoration: none;
@@ -93,21 +105,68 @@
   <div class="card">
     <div class="badge">Privacy Policy</div>
     <h1>Jam Clash</h1>
-    <p class="effective">Effective Date: February 18, 2026</p>
+    <p class="effective">Effective Date: March 10, 2026</p>
 
     <section>
-      <h2>Data Collection</h2>
-      <p>Jam Clash does not collect, store, or share any personal information.</p>
+      <h2>Overview</h2>
+      <p>Jam Clash is a music trivia game. We do not collect your name, email address, or any personally identifiable information. No account sign-up is required to play.</p>
     </section>
 
     <section>
-      <h2>How the App Works</h2>
-      <p>The app plays publicly available music previews and does not require user accounts or personal data to function.</p>
+      <h2>Music Previews — iTunes Search API</h2>
+      <p>Song previews are fetched in real time from Apple's public iTunes Search API. We do not store audio on our servers. Jam Clash is not affiliated with or endorsed by Apple Inc.</p>
     </section>
 
     <section>
-      <h2>Third Parties</h2>
-      <p>We do not sell user data to third parties.</p>
+      <h2>Online Multiplayer — Firebase</h2>
+      <p>When you host or join an online game, we use Google Firebase (Firestore) to sync the game session between players. The following temporary data is stored for the duration of a game session:</p>
+      <ul>
+        <li>A randomly generated anonymous user ID (created by Firebase, not linked to any account)</li>
+        <li>Your chosen player name and team</li>
+        <li>Game state: room code, scores, and guesses</li>
+      </ul>
+      <p style="margin-top:10px;">This data is not linked to your real identity and is not retained after the game session ends. Firebase is operated by Google LLC. See <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Microphone</h2>
+      <p>The app can optionally use your device microphone for voice-answer input. Your voice is processed on-device by iOS Speech Recognition and is never recorded, uploaded, or stored by Jam Clash. Microphone access is optional — you can type answers instead.</p>
+    </section>
+
+    <section>
+      <h2>Purchases — RevenueCat</h2>
+      <p>Pro subscriptions are processed through Apple's App Store. We use RevenueCat to manage subscription status. RevenueCat receives your App Store purchase receipt to verify entitlements. No payment details are shared with Jam Clash. See <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Local Storage</h2>
+      <p>Your preferences (selected categories, custom playlists, and active theme) are stored locally on your device using AsyncStorage and are never transmitted to our servers.</p>
+    </section>
+
+    <section>
+      <h2>Third-Party Services</h2>
+      <p>Jam Clash uses the following third-party services:</p>
+      <ul>
+        <li><strong>Apple iTunes Search API</strong> — music previews and metadata</li>
+        <li><strong>Google Firebase / Firestore</strong> — online multiplayer game sessions</li>
+        <li><strong>RevenueCat</strong> — subscription management</li>
+        <li><strong>Apple Speech Recognition</strong> — optional on-device voice input</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>Jam Clash does not knowingly collect personal information from children under 13. The app does not require any account creation or personal data to play.</p>
+    </section>
+
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Changes will be reflected on this page with an updated effective date.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions? Reach us at <a href="mailto:support@jamclash.co">support@jamclash.co</a>.</p>
     </section>
 
   </div>
