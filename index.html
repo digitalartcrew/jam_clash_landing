@@ -50,10 +50,13 @@
 </script>
 
 <link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
 
 </head>
 
 <body>
+
+<div id="bg"></div>
 
 <div class="container">
 
@@ -77,22 +80,21 @@
 
         <img src="img/jam-clash.png" class="hero-image" alt="Jam Clash music trivia game" />
 
-        <h1>The Music Trivia Game You'll Play All Night</h1>
+        <div class="hero-badge">🔥 Free on the App Store</div>
+
+        <h1>Do You Know Your Music?</h1>
 
         <p>
-            Guess songs from real iTunes previews. Battle in teams.
-            First to reach the target score wins the clash.
+            Guess songs. Battle in teams. Only one crew walks away as the music champion.
         </p>
 
         <a class="cta"
            href="https://apps.apple.com/us/app/jam-clash/id6759445060"
            target="_blank">
-           Download Now — Free
+           Play Free — Download Now
         </a>
 
-        <p style="margin-top:10px; opacity:.6; font-weight:600;">
-        Free on iPhone &nbsp;•&nbsp; No signup required
-        </p>
+        <p class="hero-sub">iPhone only &nbsp;•&nbsp; No account needed &nbsp;•&nbsp; Instant play</p>
 
     </section>
 
@@ -126,16 +128,28 @@
     <!-- Screenshots -->
     <section class="screenshots">
         <h2>See It in Action</h2>
-        <div class="screenshot-slider">
-            <img src="img/home-screen.jpg" alt="Jam Clash home screen" />
-            <img src="img/lobby.jpg" alt="Jam Clash game lobby" />
-            <img src="img/game-play.jpg" alt="Jam Clash gameplay" />
-            <img src="img/add-songs.jpg" alt="Add songs in Jam Clash" />
-            <img src="img/setting.jpg" alt="Jam Clash settings" />
-            <img src="img/winner-screen.jpg" alt="Jam Clash winner screen" />
+        <div class="slider-wrap">
+            <div class="screenshot-slider">
+                <img src="img/home-screen.jpg" alt="Jam Clash home screen" />
+                <img src="img/lobby.jpg" alt="Jam Clash game lobby" />
+                <img src="img/game-play.jpg" alt="Jam Clash gameplay" />
+                <img src="img/add-songs.jpg" alt="Add songs in Jam Clash" />
+                <img src="img/setting.jpg" alt="Jam Clash settings" />
+                <img src="img/winner-screen.jpg" alt="Jam Clash winner screen" />
+            </div>
         </div>
     </section>
 
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta">
+        <h2>Ready to Find Out Who Really Knows Music?</h2>
+        <a class="cta"
+           href="https://apps.apple.com/us/app/jam-clash/id6759445060"
+           target="_blank">
+           Download Jam Clash — It's Free
+        </a>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -162,6 +176,140 @@
     </footer>
 
 </div>
+
+<script>
+const C1 = [255, 0, 76];
+const C2 = [0, 229, 255];
+const NUM_BARS = 64;
+
+let bars = [], particles = [], notes = [], pulses = [];
+let lastBeat = 0;
+const BEAT_MS = (60 / 120) * 1000;
+
+function setup() {
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.parent('bg');
+  colorMode(RGB, 255, 255, 255, 255);
+  for (let i = 0; i < NUM_BARS; i++) bars.push(random(10, 60));
+  for (let i = 0; i < 70; i++) particles.push(new Particle(true));
+}
+
+function draw() {
+  clear();
+
+  if (millis() - lastBeat > BEAT_MS) {
+    lastBeat = millis();
+    pulses.push(new Pulse(random(width * 0.1, width * 0.9), random(height * 0.15, height * 0.85)));
+    if (random() > 0.35) notes.push(new Note(random(width * 0.05, width * 0.95), height + 20));
+  }
+
+  drawWaves();
+  drawEQBars();
+
+  for (let p of particles) { p.update(); p.show(); }
+
+  for (let i = pulses.length - 1; i >= 0; i--) {
+    pulses[i].update(); pulses[i].show();
+    if (pulses[i].dead()) pulses.splice(i, 1);
+  }
+  for (let i = notes.length - 1; i >= 0; i--) {
+    notes[i].update(); notes[i].show();
+    if (notes[i].dead()) notes.splice(i, 1);
+  }
+}
+
+function drawEQBars() {
+  let bw = width / NUM_BARS;
+  for (let i = 0; i < NUM_BARS; i++) {
+    let target = noise(i * 0.15, frameCount * 0.025) * height * 0.38;
+    bars[i] = lerp(bars[i], target, 0.1);
+    let t = i / (NUM_BARS - 1);
+    let r = lerp(C1[0], C2[0], t), g = lerp(C1[1], C2[1], t), b = lerp(C1[2], C2[2], t);
+    fill(r, g, b, 45); noStroke();
+    rect(i * bw, height - bars[i], bw - 1, bars[i], 3, 3, 0, 0);
+    fill(r, g, b, 160);
+    rect(i * bw, height - bars[i] - 3, bw - 1, 3, 2);
+  }
+}
+
+function drawWaves() {
+  for (let pass = 0; pass < 3; pass++) {
+    let t = pass / 2;
+    let r = lerp(C1[0], C2[0], t), g = lerp(C1[1], C2[1], t), b = lerp(C1[2], C2[2], t);
+    let offset = pass * TWO_PI / 3;
+    beginShape(); noFill();
+    stroke(r, g, b, 28); strokeWeight(1.5);
+    for (let x = 0; x <= width; x += 5) {
+      let y = height * 0.5
+        + sin(x * 0.012 + frameCount * 0.025 + offset) * 30
+        + sin(x * 0.027 + frameCount * 0.018 + offset) * 14;
+      vertex(x, y);
+    }
+    endShape(); noStroke();
+  }
+}
+
+class Particle {
+  constructor(init) {
+    this.x = random(width);
+    this.y = init ? random(height) : height + 5;
+    this.size = random(1.5, 3.5);
+    this.vx = random(-0.35, 0.35);
+    this.vy = random(-0.7, -0.2);
+    this.alpha = random(60, 160);
+    this.t = random(1);
+  }
+  update() {
+    this.x += this.vx + sin(frameCount * 0.012 + this.x * 0.01) * 0.25;
+    this.y += this.vy;
+    if (this.y < -10) { this.x = random(width); this.y = height + 5; }
+  }
+  show() {
+    let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t);
+    fill(r, g, b, this.alpha); noStroke();
+    ellipse(this.x, this.y, this.size);
+  }
+}
+
+class Pulse {
+  constructor(x, y) {
+    this.x = x; this.y = y;
+    this.r = 0; this.maxR = random(120, 280);
+    this.speed = random(1.8, 3.8); this.t = random(1);
+  }
+  update() { this.r += this.speed; }
+  show() {
+    let a = (1 - this.r / this.maxR) * 90;
+    let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t);
+    noFill(); stroke(r, g, b, a); strokeWeight(1.2);
+    ellipse(this.x, this.y, this.r * 2); noStroke();
+  }
+  dead() { return this.r >= this.maxR; }
+}
+
+class Note {
+  constructor(x, y) {
+    this.x = x; this.y = y;
+    this.sym = random(['♪', '♫', '♬', '♩']);
+    this.sz = random(16, 30);
+    this.vx = random(-0.5, 0.5); this.vy = random(-1.4, -0.7);
+    this.alpha = 210; this.t = random(1);
+  }
+  update() {
+    this.x += this.vx + sin(frameCount * 0.03 + this.x * 0.01) * 0.4;
+    this.y += this.vy; this.alpha -= 1.4;
+  }
+  show() {
+    let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t);
+    fill(r, g, b, this.alpha); noStroke();
+    textSize(this.sz); textAlign(CENTER, CENTER);
+    text(this.sym, this.x, this.y);
+  }
+  dead() { return this.alpha <= 0 || this.y < -50; }
+}
+
+function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+</script>
 
 </body>
 </html>
