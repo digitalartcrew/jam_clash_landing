@@ -75,6 +75,7 @@ body {
 
     background: linear-gradient(90deg, #ff004c, #00e5ff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -148,14 +149,34 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.screenshot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
+.screenshot-slider {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
 }
 
-.screenshot-grid img {
-    width: 100%;
+.screenshot-slider::-webkit-scrollbar {
+    height: 4px;
+}
+
+.screenshot-slider::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+
+.screenshot-slider::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.screenshot-slider img {
+    height: 380px;
+    width: auto;
+    flex-shrink: 0;
+    scroll-snap-align: start;
     border-radius: 16px;
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
