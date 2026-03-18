@@ -132,6 +132,35 @@ body {
     font-weight: 600;
 }
 
+/* screenshots */
+.screenshots {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.screenshots h2 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.screenshot-grid img {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
 /* footer */
 .footer {
     margin-top: 60px;
