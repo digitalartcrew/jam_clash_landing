@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Host Jam Clash at Your Venue — Partner with Jam Clash</title>
+
+<link rel="canonical" href="https://www.jamclash.co/partners" />
+<link rel="icon" href="img/icon.png">
+
+<meta name="description" content="Partner with Jam Clash to bring live music trivia pre-events to your club, lounge, or venue. Drive early admission, boost bar revenue, and give your guests an unforgettable icebreaker — at zero cost.">
+<meta name="keywords" content="venue entertainment, club pre-event, music trivia night venue, nightlife entertainment partner, Jam Clash venue partner, drive bar revenue, early admission">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.jamclash.co/partners" />
+<meta property="og:title" content="Partner with Jam Clash — Host Live Music Trivia at Your Venue" />
+<meta property="og:description" content="Bring live music battles to your venue. Drive early admission, fill the bar, and give your crowd an experience they'll come back for." />
+<meta property="og:image" content="https://www.jamclash.co/img/jam-clash.png" />
+
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+
+<style>
+.nav-link {
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .3px;
+    transition: color .2s;
+}
+.nav-link:hover { color: #fff; }
+
+/* ── hero ── */
+.partners-hero {
+    text-align: center;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255,0,76,.18), rgba(0,229,255,.18));
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #00e5ff;
+    margin-bottom: 20px;
+}
+
+.partners-hero h1 {
+    font-size: clamp(32px, 5.5vw, 56px);
+    font-weight: 900;
+    line-height: 1.08;
+    max-width: 680px;
+    margin: 0 0 18px;
+    background: linear-gradient(100deg, #ff004c 0%, #fff 55%, #00e5ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.partners-hero p {
+    font-size: 17px;
+    font-weight: 600;
+    opacity: .7;
+    max-width: 500px;
+    line-height: 1.65;
+    margin: 0 0 32px;
+}
+
+.hero-cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff004c, #00e5ff);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(255,0,100,.5);
+    transition: transform .2s, box-shadow .2s;
+}
+.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 44px rgba(0,229,255,.9); }
+
+.btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,.2);
+    color: white;
+    padding: 16px 28px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05); }
+
+/* ── stat strip ── */
+.stat-strip {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 26px 18px;
+    text-align: center;
+    background: linear-gradient(160deg, #161616, #0c0c0c);
+    border-right: 1px solid rgba(255,255,255,.06);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    opacity: .5;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* ── sections ── */
+.section-block { margin-top: 88px; }
+
+.section-eyebrow {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ff004c;
+    margin-bottom: 8px;
+}
+
+.section-block h2 {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 900;
+    margin: 0 0 10px;
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.section-rule {
+    height: 2px;
+    width: 44px;
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    border-radius: 2px;
+    margin-bottom: 36px;
+}
+
+/* ── pitch two-col ── */
+.pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+@media (max-width: 640px) {
+    .pitch-grid { grid-template-columns: 1fr; }
+    .stat-strip { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .stat-item:last-child { border-bottom: none; }
+}
+
+.pitch-box {
+    background: linear-gradient(160deg, #161616, #0a0a0a);
+    border: 1px solid rgba(255,255,255,.07);
+    border-top: 1px solid rgba(255,255,255,.13);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.pitch-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.venue-box .pitch-label { color: #00e5ff; }
+.app-box   .pitch-label { color: #ff004c; }
+
+.pitch-box h3 {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 0 20px;
+    line-height: 1.2;
+}
+
+.pitch-box ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.pitch-box li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: .82;
+    line-height: 1.5;
+}
+
+.pitch-box li::before { content: '✓'; font-weight: 900; flex-shrink: 0; margin-top: 1px; font-size: 13px; }
+
+.venue-box li::before { color: #00e5ff; }
+.app-box   li::before { color: #ff004c; }
+
+/* ── value cards ── */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.value-card {
+    background: linear-gradient(160deg, #161616, #0a0a0a);
+    border: 1px solid rgba(255,255,255,.07);
+    border-top: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.value-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(0,0,0,.7), 0 0 28px rgba(0,229,255,.08);
+}
+
+.value-icon { font-size: 26px; margin-bottom: 12px; display: block; }
+
+.value-card h3 { font-size: 15px; font-weight: 800; margin: 0 0 6px; }
+
+.value-card p { font-size: 13px; font-weight: 600; opacity: .6; line-height: 1.6; margin: 0; }
+
+/* ── how it works timeline ── */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 36px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 10px; bottom: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, #ff004c, #00e5ff);
+    opacity: .3;
+    border-radius: 2px;
+}
+
+.timeline-step { position: relative; padding: 20px 0 20px 22px; }
+
+.timeline-dot {
+    position: absolute;
+    left: -28px; top: 26px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff004c, #00e5ff);
+    box-shadow: 0 0 8px rgba(255,0,76,.5);
+}
+
+.timeline-time { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #00e5ff; margin-bottom: 4px; }
+
+.timeline-step h3 { font-size: 16px; font-weight: 800; margin: 0 0 4px; }
+
+.timeline-step p { font-size: 13px; font-weight: 600; opacity: .6; line-height: 1.55; margin: 0; }
+
+/* ── booking form ── */
+.booking-section {
+    margin-top: 88px;
+    background: linear-gradient(135deg, rgba(255,0,76,.1), rgba(0,229,255,.07));
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 24px;
+    padding: 52px 40px;
+    box-shadow: 0 0 60px rgba(255,0,76,.07), inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.booking-section h2 {
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 900;
+    margin: 0 0 10px;
+    background: linear-gradient(90deg, #ff004c, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.booking-section > p {
+    font-size: 15px;
+    font-weight: 600;
+    opacity: .6;
+    margin: 0 0 36px;
+    max-width: 460px;
+    line-height: 1.6;
+}
+
+.contact-options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+</style>
+
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div class="container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/icon.png" alt="Jam Clash app icon" />
+            <span>Jam Clash</span>
+        </div>
+        <nav style="display:flex; align-items:center; gap:22px;">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="events.html" class="nav-link">Events</a>
+            <a class="download-btn"
+               href="https://apps.apple.com/us/app/jam-clash/id6759445060"
+               target="_blank">
+               Download
+            </a>
+        </nav>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="partners-hero">
+        <span class="eyebrow">🤝 Venue Partners</span>
+        <h1>Bring Jam Clash Live to Your Venue</h1>
+        <p>
+            A live music trivia pre-event that fills your floor early, boosts bar revenue,
+            and gives your crowd something to talk about — before the main event even starts.
+            Zero cost to you.
+        </p>
+        <div class="hero-cta-row">
+            <a class="btn-primary"
+               href="mailto:hello@jamclash.co?subject=Jam Clash Live — Venue Partnership">
+               Get in Touch
+            </a>
+            <a class="btn-outline" href="events.html">See Upcoming Events</a>
+        </div>
+    </section>
+
+
+    <!-- Stats -->
+    <div class="stat-strip">
+        <div class="stat-item">
+            <div class="stat-num">1.5 hrs</div>
+            <div class="stat-label">Before Main Event</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">30–45</div>
+            <div class="stat-label">Min of Gameplay</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">$0</div>
+            <div class="stat-label">Cost to Venue</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Equipment Needed</div>
+        </div>
+    </div>
+
+
+    <!-- Business Model Split -->
+    <div class="section-block">
+        <span class="section-eyebrow">Why It Works</span>
+        <h2>A Win on Both Sides</h2>
+        <div class="section-rule"></div>
+
+        <div class="pitch-grid">
+            <div class="pitch-box venue-box">
+                <span class="pitch-label">For Your Venue</span>
+                <h3>More people in. Earlier. Spending more.</h3>
+                <ul>
+                    <li>Guests arrive 90 minutes before the main event — more time at the bar</li>
+                    <li>Music trivia is the perfect icebreaker — guests loosen up and connect before the night begins</li>
+                    <li>Zero dead air from doors-open to main event</li>
+                    <li>No equipment, no crew, no setup — guests use their own iPhones</li>
+                    <li>Zero cost to the venue</li>
+                    <li>Unique pre-show experience that sets your night apart from every other event in the city</li>
+                    <li>Shareable social moments that promote your event organically</li>
+                </ul>
+            </div>
+
+            <div class="pitch-box app-box">
+                <span class="pitch-label">For Jam Clash</span>
+                <h3>Live events are our best subscriber funnel.</h3>
+                <ul>
+                    <li>Events are gated to Jam Clash Pro — every event converts new paying subscribers</li>
+                    <li>Guests experience the game at its best: live, in a crowd, with real competition energy</li>
+                    <li>Word-of-mouth from events drives organic App Store downloads</li>
+                    <li>Social content from live events builds brand awareness at scale</li>
+                    <li>Venue partnerships create recurring, predictable subscriber growth</li>
+                    <li>Builds Jam Clash as the premier nightlife entertainment platform on iOS</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Venue Value Cards -->
+    <div class="section-block">
+        <span class="section-eyebrow">The Details</span>
+        <h2>What You Get</h2>
+        <div class="section-rule"></div>
+
+        <div class="value-grid">
+            <div class="value-card">
+                <span class="value-icon">🍹</span>
+                <h3>More Bar Revenue</h3>
+                <p>An extra 90 minutes of floor time per guest, starting from doors open. That's more rounds ordered before the headliner even drops.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🔥</span>
+                <h3>No Dead Air</h3>
+                <p>The room is alive from the moment the first guest walks in. Competitive music trivia fills every minute until the main show.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🤝</span>
+                <h3>Built-In Icebreaker</h3>
+                <p>Teams form naturally — guests mix across friend groups and meet strangers over music. Your crowd connects before the event starts.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">📱</span>
+                <h3>Zero Setup</h3>
+                <p>No projector. No rented gear. No staff needed to run it. Guests download Jam Clash, go Pro, and the game handles everything.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">📣</span>
+                <h3>Organic Social Reach</h3>
+                <p>Live trivia battles are shareable. Guests post clips and reactions — your event gets promoted in real time by your own crowd.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">⭐</span>
+                <h3>Stand Out</h3>
+                <p>A pre-show music trivia experience is a unique booking hook. Give people a reason to show up early — and come back next time.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- How It Works -->
+    <div class="section-block">
+        <span class="section-eyebrow">The Format</span>
+        <h2>How the Night Runs</h2>
+        <div class="section-rule"></div>
+
+        <div class="timeline">
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Doors Open — T minus 90 min</div>
+                <h3>Early Admission for Pro Members</h3>
+                <p>Jam Clash Pro members get early access. Your venue opens 90 minutes before the main event. Bar is open, room is filling up.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">T minus 75 min</div>
+                <h3>Teams Form on Their Phones</h3>
+                <p>Guests pair up and join the event lobby in the Jam Clash app. No staff involvement, no PA system needed. It just runs.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">30–45 min of gameplay</div>
+                <h3>Live Music Trivia Battles</h3>
+                <p>Real iTunes song previews. Multiple genres. Fast rounds. Teams compete for the top score. The crowd is loud and locked in.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Winners Crowned</div>
+                <h3>Champions Announced</h3>
+                <p>Top team gets recognized. Venue can offer prizes or shoutouts. The energy peaks right as the main event is about to start.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Main Event Begins</div>
+                <h3>Seamless Handoff</h3>
+                <p>Jam Clash wraps 30+ minutes before the headliner. Your room is already full, already warmed up, and ready for whatever's next.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Booking CTA -->
+    <div class="booking-section">
+        <h2>Ready to Partner with Jam Clash?</h2>
+        <p>
+            We're actively looking for clubs, lounges, and event promoters to bring Jam Clash Live to.
+            Reach out and let's build something your crowd won't forget.
+        </p>
+        <div class="contact-options">
+            <a class="btn-primary"
+               href="mailto:hello@jamclash.co?subject=Jam Clash Live — Venue Partnership">
+               Email Us to Book
+            </a>
+            <a class="btn-outline"
+               href="https://www.instagram.com/playjamclash"
+               target="_blank">
+               DM on Instagram
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        Built by Father &amp; Son team — Donte Burney and Nicholas Burney (Ngneerx Technology LLC)
+
+        <br><br>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/playjamclash" target="_blank">Instagram @playjamclash</a>
+            <a href="https://www.tiktok.com/@jamclashtrivia" target="_blank">TikTok @jamclashtrivia</a>
+        </div>
+
+        <br>
+
+        <a href="index.html">Home</a>
+        &nbsp;·&nbsp;
+        <a href="events.html">Events</a>
+        &nbsp;·&nbsp;
+        <a href="privacy.html">Privacy Policy</a>
+
+    </footer>
+
+</div>
+
+<script>
+const C1 = [255, 0, 76];
+const C2 = [0, 229, 255];
+const NUM_BARS = 64;
+let bars = [], particles = [], notes = [], pulses = [];
+let lastBeat = 0;
+const BEAT_MS = (60 / 120) * 1000;
+
+function setup() {
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.parent('bg');
+  colorMode(RGB, 255, 255, 255, 255);
+  for (let i = 0; i < NUM_BARS; i++) bars.push(random(10, 60));
+  for (let i = 0; i < 70; i++) particles.push(new Particle(true));
+}
+
+function draw() {
+  clear();
+  if (millis() - lastBeat > BEAT_MS) {
+    lastBeat = millis();
+    pulses.push(new Pulse(random(width * 0.1, width * 0.9), random(height * 0.15, height * 0.85)));
+    if (random() > 0.35) notes.push(new Note(random(width * 0.05, width * 0.95), height + 20));
+  }
+  drawWaves();
+  drawEQBars();
+  for (let p of particles) { p.update(); p.show(); }
+  for (let i = pulses.length - 1; i >= 0; i--) { pulses[i].update(); pulses[i].show(); if (pulses[i].dead()) pulses.splice(i, 1); }
+  for (let i = notes.length - 1; i >= 0; i--) { notes[i].update(); notes[i].show(); if (notes[i].dead()) notes.splice(i, 1); }
+}
+
+function drawEQBars() {
+  let bw = width / NUM_BARS;
+  for (let i = 0; i < NUM_BARS; i++) {
+    let target = noise(i * 0.15, frameCount * 0.025) * height * 0.38;
+    bars[i] = lerp(bars[i], target, 0.1);
+    let t = i / (NUM_BARS - 1);
+    let r = lerp(C1[0], C2[0], t), g = lerp(C1[1], C2[1], t), b = lerp(C1[2], C2[2], t);
+    fill(r, g, b, 45); noStroke();
+    rect(i * bw, height - bars[i], bw - 1, bars[i], 3, 3, 0, 0);
+    fill(r, g, b, 160);
+    rect(i * bw, height - bars[i] - 3, bw - 1, 3, 2);
+  }
+}
+
+function drawWaves() {
+  for (let pass = 0; pass < 3; pass++) {
+    let t = pass / 2;
+    let r = lerp(C1[0], C2[0], t), g = lerp(C1[1], C2[1], t), b = lerp(C1[2], C2[2], t);
+    let offset = pass * TWO_PI / 3;
+    beginShape(); noFill(); stroke(r, g, b, 28); strokeWeight(1.5);
+    for (let x = 0; x <= width; x += 5) {
+      let y = height * 0.5 + sin(x * 0.012 + frameCount * 0.025 + offset) * 30 + sin(x * 0.027 + frameCount * 0.018 + offset) * 14;
+      vertex(x, y);
+    }
+    endShape(); noStroke();
+  }
+}
+
+class Particle {
+  constructor(init) { this.x = random(width); this.y = init ? random(height) : height + 5; this.size = random(1.5, 3.5); this.vx = random(-0.35, 0.35); this.vy = random(-0.7, -0.2); this.alpha = random(60, 160); this.t = random(1); }
+  update() { this.x += this.vx + sin(frameCount * 0.012 + this.x * 0.01) * 0.25; this.y += this.vy; if (this.y < -10) { this.x = random(width); this.y = height + 5; } }
+  show() { let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t); fill(r, g, b, this.alpha); noStroke(); ellipse(this.x, this.y, this.size); }
+}
+
+class Pulse {
+  constructor(x, y) { this.x = x; this.y = y; this.r = 0; this.maxR = random(120, 280); this.speed = random(1.8, 3.8); this.t = random(1); }
+  update() { this.r += this.speed; }
+  show() { let a = (1 - this.r / this.maxR) * 90; let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t); noFill(); stroke(r, g, b, a); strokeWeight(1.2); ellipse(this.x, this.y, this.r * 2); noStroke(); }
+  dead() { return this.r >= this.maxR; }
+}
+
+class Note {
+  constructor(x, y) { this.x = x; this.y = y; this.sym = random(['♪', '♫', '♬', '♩']); this.sz = random(16, 30); this.vx = random(-0.5, 0.5); this.vy = random(-1.4, -0.7); this.alpha = 210; this.t = random(1); }
+  update() { this.x += this.vx + sin(frameCount * 0.03 + this.x * 0.01) * 0.4; this.y += this.vy; this.alpha -= 1.4; }
+  show() { let r = lerp(C1[0], C2[0], this.t), g = lerp(C1[1], C2[1], this.t), b = lerp(C1[2], C2[2], this.t); fill(r, g, b, this.alpha); noStroke(); textSize(this.sz); textAlign(CENTER, CENTER); text(this.sym, this.x, this.y); }
+  dead() { return this.alpha <= 0 || this.y < -50; }
+}
+
+function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+</script>
+
+</body>
+</html>
